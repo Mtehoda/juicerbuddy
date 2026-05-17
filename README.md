@@ -26,7 +26,7 @@ Then run the app with `npm run dev`.
 This repo is configured with `gh-pages` and a deployment workflow.
 
 1. Push the repository to GitHub.
-2. Ensure the default branch is `main` or `master`.
+2. Ensure the default branch is `main`.
 3. The workflow in `.github/workflows/deploy.yml` will run on push and publish the site to GitHub Pages.
 
 After deployment, your site will be available at:
