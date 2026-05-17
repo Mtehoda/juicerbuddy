@@ -77,7 +77,7 @@ export default function App() {
     }
 
     try {
-       const response = await fetch("http://localhost:3001/api/messages", {
+       const response = await fetch("http://localhost:3001/api/v1/messages", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

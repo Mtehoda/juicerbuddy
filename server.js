@@ -9,8 +9,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const client = new Anthropic({
-  apiKey: process.env.VITE_ANTHROPIC_API_KEY,
+ const client = new Anthropic({
+  apiKey: process.env.ANTHROPIC_API_KEY,
 });
 
 app.post("/api/v1/messages", async (req, res) => {
