@@ -1,36 +1,21 @@
-import express from 'express'
-import cors from 'cors'
-import Anthropic from '@anthropic-ai/sdk'
-import dotenv from 'dotenv'
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+import messagesHandler from "./api/messages.js";
 
-dotenv.config()
+dotenv.config();
 
-const app = express()
-app.use(cors())
-app.use(express.json())
+const app = express();
+const port = process.env.PORT || 3001;
 
-// IMPORTANT: Backend MUST use ANTHROPIC_API_KEY, not VITE_...
-const client = new Anthropic({
-  apiKey: process.env.ANTHROPIC_API_KEY,
-})
+app.use(cors());
+app.use(express.json());
+app.post("/api/messages", messagesHandler);
 
-// IMPORTANT: Match your frontend route EXACTLY
-app.post('/api/v1/messages', async (req, res) => {
-  try {
-    const { messages, system, max_tokens } = req.body
+app.use((req, res) => {
+  res.status(404).json({ error: "Not found" });
+});
 
-    const response = await client.messages.create({
-      model: "claude-sonnet-4-6",
-      max_tokens: max_tokens || 1000,
-      system,
-      messages,
-    })
-
-    res.json(response)
-  } catch (err) {
-    console.error('Error:', err)
-    res.status(500).json({ error: err.message })
-  }
-})
-
-app.listen(3001, () => console.log('Proxy running on http://localhost:3001'))
+app.listen(port, () => {
+  console.log(`API server listening at http://localhost:${port}`);
+});
