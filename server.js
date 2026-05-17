@@ -20,7 +20,7 @@ app.post('/api/v1/messages', async (req, res) => {
     const { messages, system, max_tokens } = req.body
 
     const response = await client.messages.create({
-      model: "claude-3-5-sonnet-latest",
+      model: "claude-sonnet-4-6",
       max_tokens: max_tokens || 1000,
       system,
       messages,
