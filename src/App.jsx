@@ -77,11 +77,10 @@ export default function App() {
     }
 
     try {
-       const response = await fetch("/api/v1/messages", {
+       const response = await fetch("http://localhost:3001/api/messages", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
-          "x-api-key": import.meta.env.VITE_ANTHROPIC_API_KEY,
+            "Content-Type": "application/json",
         },
         body: JSON.stringify({
           model: "claude-sonnet-4-20250514",
