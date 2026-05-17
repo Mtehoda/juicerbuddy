@@ -83,7 +83,7 @@ export default function App() {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          model: "claude-sonnet-4-20250514",
+          model: "claude-3-5-sonnet-latest",
           max_tokens: 1000,
           system: `You are a master juice therapist and nutritionist. Generate a detailed, personalized juicing recipe. 
 Return ONLY valid JSON (no markdown, no backticks, no explanation) in this exact structure:
