@@ -9,6 +9,7 @@ export default defineConfig({
       '/api': {
         target: 'https://api.anthropic.com',
         changeOrigin: true,
+        secure: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       }
     }
