@@ -70,14 +70,8 @@ export default function App() {
 
     const goalLabels = selectedGoals.map(id => GOALS.find(g => g.id === id)?.label).join(", ");
 
-    if (!import.meta.env.VITE_ANTHROPIC_API_KEY) {
-      setError("Missing Anthropic API key. Add VITE_ANTHROPIC_API_KEY to your .env file.");
-      setLoading(false);
-      return;
-    }
-
     try {
-       const response = await fetch("/api/v1/messages", {
+       const response = await fetch("/api/messages", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
